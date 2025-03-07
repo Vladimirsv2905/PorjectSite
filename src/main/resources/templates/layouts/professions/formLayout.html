@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="professionsFormLayout(profession)">
+    <form class="form" th:object="${profession}" method="post" th:action="@{${profession.id == null ?
+                                                                                    '/admin/professions' :
+                                                                                    '/admin/professions/' + profession.id}}">
+        <input type="text" class="inputText" placeholder="назавание" th:field="*{name}">
+        <input type="text" class="inputText" placeholder="заметка" th:field="*{note}">
+        <input type="submit" class="inputSubmit" value="add">
+    </form>
+</th:block>
+</body>
+</html>
+
+

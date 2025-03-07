@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Spring_MVC_Demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/company_326
+    username: postgres
+    password: Alkaline87!
+  jpa:
+    hibernate:
+      ddl-auto: update
+#  flyway:
+#    url: jdbc:postgresql://localhost:5432/company_326
+#    user: postgres
+#    password: ItsMyLife0203
+#    locations: classpath:db.migration
+server:
+  port: 8000

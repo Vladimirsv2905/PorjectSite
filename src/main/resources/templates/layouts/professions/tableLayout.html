@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="professionsTableLayout(professions)">
+    <table class="table">
+        <thead>
+        <th>id</th>
+        <th>Название</th>
+        <th>Заметка</th>
+        <th>edit</th>
+        <th>delete</th>
+        </thead>
+        <tbody>
+        <th:block th:each="profession : ${professions}">
+            <tr>
+                <td>[[${profession.id}]]</td>
+                <td>[[${profession.name}]]</td>
+                <td>[[${profession.note}]]</td>
+                <td><a class="a_button" th:href="@{'/admin/professions/' +${profession.id}}">edit</a></td>
+                <td>
+                    <form method="post" th:action="@{'/admin/professions/delete/' + ${profession.id}}">
+                        <input type="submit" class="a_button" value="delete">
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</th:block>
+</body>
+</html>

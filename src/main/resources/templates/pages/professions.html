@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Professions</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<th:block th:insert="~{/layouts/header.html::headerLayout}"/>
+
+<div class="container">
+        <div class="modal">
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/">Главная</a>
+            <th:block th:insert="~{/layouts/professions/formLayout.html::professionsFormLayout(${profession})}"/>
+
+            <th:block th:insert="~{/layouts/professions/tableLayout.html::professionsTableLayout(${professions})}"/>
+        </div>
+    </div>
+</body>
+</html>
