@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Professions</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+<th:block th:insert="~{/layouts/header.html::headerLayout}"/>
+
+<div class="container">
+    <div class="modal">
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/">Главная</a>
+        <th:block th:insert="~{/layouts/users/formUsers.html::usersFormLayout(${user})}"/>
+
+        <th:block th:insert="~{/layouts/users/tableUsers.html::usersTableLayout(${users})}"/>
+        <div sec:authorize="hasRole('ADMIN')">
+            This will only be displayed if authenticated user has role ROLE_ADMIN.
+        </div>
+        <div sec:authentication="name">
+            The value of the "name" property of the authentication object should appear here.
+        </div>
+    </div>
+</div>
+</body>
+</html>
