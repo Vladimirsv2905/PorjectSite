@@ -41,13 +41,15 @@
 <!--            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/admin/employees">employees</a>-->
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/admin/professions">professions</a>
 <!--            <a class="py-2 link-body-emphasis text-decoration-none" href="/profile">professions</a>-->
-            <a class="py-2 link-body-emphasis text-decoration-none" href="/login">Вход</a>
-            <a class="py-2 link-body-emphasis text-decoration-none" href="/logout">Выход</a>
+            <a sec:authorize="!isAuthenticated()" class="py-2 link-body-emphasis text-decoration-none" href="/login">Вход</a>
+            <a sec:authorize="isAuthenticated()" class="py-2 link-body-emphasis text-decoration-none" href="/logout">Выход</a>
             <a class="py-2 link-body-emphasis text-decoration-none" href="/profile">профиль</a>
             <p th:text="'Имя пользователя: ' + ${username}"></p>
-            <a sec:authorize="isAuthenticated()" href="/login">
-                kjuby
-            </a>
+
+            <p sec:authorize="hasRole('ADMIN')"th:text="'Вы вошли как администратор. '"><span th:text="${username}"></span>!</p>
+            <p sec:authorize="hasRole('USER')"th:text="'Вы вошли как пользователь. '"></p>
+
+
 
 
 

@@ -9,4 +9,5 @@ public interface DAO<T> {
     T save(T t);
     T update(T t);
     boolean deleteById(int id);
+
 }

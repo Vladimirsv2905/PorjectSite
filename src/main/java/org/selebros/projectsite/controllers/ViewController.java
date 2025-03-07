@@ -21,4 +21,9 @@ public class ViewController {
     public String test() {
         return "pages/test";
     }
+
+    @GetMapping("/error")
+    public String error() {
+        return "pages/error";
+    }
 }

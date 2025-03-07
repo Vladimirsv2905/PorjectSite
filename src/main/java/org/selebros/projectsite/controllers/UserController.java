@@ -5,14 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.selebros.projectsite.dao.interfaces.UserService;
 import org.selebros.projectsite.security.entity.User;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +42,10 @@ public class UserController {
         model.addAttribute("users", userService.all());
         return "pages/users";
     }
+
+
+
+
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyRole( 'ADMIN')")
     public String update(User user) {
@@ -68,6 +71,14 @@ public class UserController {
 
         return "profile";
     }
+
+
+
+
+
+
+
+
 //    @GetMapping("/")
 //    public String adminPage(Authentication authentication, Model model) {
 //        if (authentication != null) {

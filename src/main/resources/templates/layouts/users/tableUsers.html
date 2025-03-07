@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,8 +12,8 @@
         <th>id</th>
         <th>Имя</th>
         <th>Роль</th>
-        <th>edit</th>
-        <th>delete</th>
+        <th sec:authorize="hasRole('ADMIN')">edit</th>
+        <th sec:authorize="hasRole('ADMIN')">delete</th>
         </thead>
         <tbody>
         <th:block th:each="user : ${users}">
@@ -21,8 +22,8 @@
                 <td>[[${user.username}]]</td>
                 <td>[[${user.role}]]</td>
 
-                <td><a class="a_button"  th:href="@{'/admin/users/' +${user.id}}">edit</a></td>
-                <td>
+                <td sec:authorize="hasRole('ADMIN')"><a class="a_button"  th:href="@{'/admin/users/' +${user.id}}">edit</a></td>
+                <td sec:authorize="hasRole('ADMIN')">
                     <form method="post" th:action="@{'/admin/users/delete/' + ${user.id}}">
                         <input type="submit" class="a_button" value="delete">
                     </form>
