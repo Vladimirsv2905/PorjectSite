@@ -20,9 +20,21 @@
             <tr>
                 <td>[[${user.id}]]</td>
                 <td>[[${user.username}]]</td>
-                <td>[[${user.role}]]</td>
-
+                <td>
+                    <select name="role">
+                        <option value="[[${user.role}]]"></option>
+                        <option value="ROLE_ADMIN">Администратор</option>
+                        <option value="ROLE_USER">Пользователь</option>
+                        <option value="ROLE_LOSER">Заблокированный</option>
+                </select>
+                </td>
+<!--                <td sec:authorize="hasRole('ADMIN')"><a class="a_button"  th:href="@{'/admin/users/' +${user.id}}">edit</a></td>-->
                 <td sec:authorize="hasRole('ADMIN')"><a class="a_button"  th:href="@{'/admin/users/' +${user.id}}">edit</a></td>
+
+
+
+
+
                 <td sec:authorize="hasRole('ADMIN')">
                     <form method="post" th:action="@{'/admin/users/delete/' + ${user.id}}">
                         <input type="submit" class="a_button" value="delete">

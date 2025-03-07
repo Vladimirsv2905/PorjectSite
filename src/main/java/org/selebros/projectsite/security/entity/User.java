@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -28,6 +30,7 @@ public class User implements UserDetails {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
     public User(String username, String password) {
         this.username = username;
@@ -61,4 +64,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+//
+//    public Collection<Object> getRoles() {
+//    }
 }

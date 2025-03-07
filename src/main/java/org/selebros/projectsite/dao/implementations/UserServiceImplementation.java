@@ -16,6 +16,8 @@ import java.util.Optional;
 public class UserServiceImplementation implements UserService {
     private final UserRepository repo;
     private final PasswordEncoder encoder;
+
+
     @Override
     public List<User> all() {
         return repo.findAll();
